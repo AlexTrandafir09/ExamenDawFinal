@@ -2,5 +2,7 @@
 {
     public class ComandaRequestDto
     {
+        bool cu_card {  get; set; }
+
     }
 }
