@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ExamenDawFinal.Model.Comanda;
 using ExamenDawFinal.Repositories.ComandaRepository;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace ExamenDawFinal.Controllers {
 
@@ -17,20 +16,16 @@ namespace ExamenDawFinal.Controllers {
             _mapper = mapper;
             _comandaRepository = comandaRepository;
         }
+        [HttpGet]
         public async Task<IEnumerable<comanda>> GetAllComenzi() //afisare comenzi
         {
             return await _comandaRepository.GetAllAsync();
         }
+        [HttpPost]
         public async Task CreateComanda(comanda comanda) //creare comanda
         {
             await _comandaRepository.CreateAsync(comanda);
             await _comandaRepository.SaveAsync();
         }
-        public async Task<comanda> GetComanda(Guid id) //afisare o singura comanda
-        {
-            return await _comandaRepository.FindByIdAsync(id);
-        }
-
-
     }
 }
